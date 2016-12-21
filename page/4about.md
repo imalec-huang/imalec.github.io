@@ -27,7 +27,7 @@ icon: heart
 
 该博客主要是为了梳理工作中的一些问题与架构设计完善过程的记录，以及一些相关技术笔记！
 
->>**若您想使用这个 jekyll 博客主题，请访问：[https://github.com/Gaohaoyang/gaohaoyang.github.io](https://github.com/Gaohaoyang/gaohaoyang.github.io)**
+>**若您想使用这个 jekyll 博客主题，请访问：[https://github.com/Gaohaoyang/gaohaoyang.github.io](https://github.com/Gaohaoyang/gaohaoyang.github.io)**
 
 
 ## 友情链接
