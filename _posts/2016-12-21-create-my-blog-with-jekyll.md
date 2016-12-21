@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Jekyll 搭建静态博客"
-date:   2015-02-15 22:14:54
+date:   2016-12-21 19:19:00
 categories: jekyll
 tags: jekyll RubyGems
 ---
