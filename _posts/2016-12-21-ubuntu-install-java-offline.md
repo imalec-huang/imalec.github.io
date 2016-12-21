@@ -9,11 +9,11 @@ tags: linux ubuntu java
 * content
 {:toc}
 
-#解决问题
+###解决问题
 
 ubunut中通过apt安装java因为生产环境网络问题选择离线安装
 
-#安装shell脚本
+###安装shell脚本
 
 ```
 #!/bin/bash
