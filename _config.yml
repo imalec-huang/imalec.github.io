@@ -7,7 +7,7 @@
 
 # Site settings
 title: Evis.Huang's Blog & Note
-brief-intro: Front-end Dev Engineer
+brief-intro: Java Dev Engineer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://imevis.github.io" # the base hostname & protocol for your site
 
