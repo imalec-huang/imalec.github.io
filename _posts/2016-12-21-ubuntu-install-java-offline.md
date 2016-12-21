@@ -22,26 +22,6 @@ PRIVATE_TOKEN=jVraFSwVWZZX4PESyZgm
 declare -A DOMAINS
 DOMAINS[172.25.156.75]=es-client-01.clio.uledns.com
 DOMAINS[172.25.156.77]=es-client-02.clio.uledns.com
-DOMAINS[172.25.156.80]=es-client-03.clio.uledns.com
-DOMAINS[172.25.156.73]=es-data-01.clio.uledns.com
-DOMAINS[172.25.156.78]=es-data-02.clio.uledns.com
-DOMAINS[172.25.156.81]=es-data-03.clio.uledns.com
-DOMAINS[172.25.156.84]=es-data-04.clio.uledns.com
-DOMAINS[172.25.156.87]=es-data-05.clio.uledns.com
-DOMAINS[172.25.156.88]=kibana-01.clio.uledns.com
-DOMAINS[172.25.156.89]=kibana-02.clio.uledns.com
-DOMAINS[172.25.156.74]=logstash-01.clio.uledns.com
-DOMAINS[172.25.156.76]=logstash-02.clio.uledns.com
-DOMAINS[172.25.156.79]=logstash-03.clio.uledns.com
-DOMAINS[172.25.156.82]=logstash-04.clio.uledns.com
-DOMAINS[172.25.156.85]=logstash-05.clio.uledns.com
-DOMAINS[172.25.156.95]=logstash-06.clio.uledns.com
-DOMAINS[172.25.156.92]=logstash-07.clio.uledns.com
-DOMAINS[172.25.156.93]=logstash-08.clio.uledns.com
-DOMAINS[172.25.156.94]=logstash-09.clio.uledns.com
-DOMAINS[172.25.156.83]=logstash-10.clio.uledns.com
-DOMAINS[172.25.156.86]=logstash-11.clio.uledns.com
-DOMAINS[172.25.156.96]=logstash-12.clio.uledns.com
 
 LOCAL_IP=`ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"`
 DOMAIN=${DOMAINS[$LOCAL_IP]}
