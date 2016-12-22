@@ -46,74 +46,21 @@ icon: bookmark
 
 ## 框架
 
-### React
-
-* [深入理解 React -Thinking in React 中文版](http://reactjs.cn/react/docs/thinking-in-react.html)
-* [Thinking in React](http://facebook.github.io/react/docs/thinking-in-react.html)
-
 ## 模块化
 
 * [后端程序员的 JavaScript 之旅 - 模块化（一）](http://lishaopeng.com/2016/02/05/js-module/)
 * [后端程序员的 JavaScript 之旅 - 模块化（二）](http://lishaopeng.com/2016/02/11/js-module2/)
 * [后端程序员的 JavaScript 之旅 - 模块化（三）](http://lishaopeng.com/2016/02/19/js-module3/)
 
-## 技巧
-
-* [将footer固定在页面底部的实现方法](https://segmentfault.com/a/1190000004453249)
-
-
 ## 编辑器
 
-### Atom 中常用插件
+### Sublime text 3
 
-* auto-beautify
-* autoprefixer
-* block-comment
-* color-picker
-* docblockr
-* emmet
-* jquery-snippets
-* jshint
-* linter
-* linter-csslint
-* linter-htmlhint
-* minimap
-* minimap-git-diff
-* open-in-browser
-* uglify
-* active-power-mode
-* atom-terminal-panel
-* linter-scss-linter
+* [Ubuntu中支持中文输入法](http://html5beta.com/page/ubuntu-14-04-install-fcitx-sougoupinyin-sublime-text-3-chinese-input-fix.html)
 
-## GitBook 及其插件
+* [Sublime Pretty Json Plugin](https://github.com/dzhibas/SublimePrettyJson)
 
-* [Gitbook 的使用和常用插件 -赵达](http://zhaoda.net/2015/11/09/gitbook-plugins/)
-* [gitbook-plugin-expandable-chapters](https://plugins.gitbook.com/plugin/expandable-chapters)
-
-    折叠左侧目录章节。
-
-    ![](http://ww4.sinaimg.cn/large/7011d6cfjw1f08kmplbj1j20gn05l0tk.jpg)
-
-## Chrome 插件
-
-* [Chrome扩展及应用开发 -图灵电子书](http://www.ituring.com.cn/minibook/950)
-
-* [有哪些鲜为人知却非常有意思、好用的 Chrome 扩展？ -知乎](https://www.zhihu.com/question/23228162#answer-28057391)
-* [Dribbble New Tab](https://chrome.google.com/webstore/detail/dribbble-new-tab/hmhjbefkpednjogghoibpejdmemkinbn)
-
-    新建 tab 时，显示 dribbble 上的精选作品。
-
-## Other blogs
-
-* [凳子_Joinery 邓智容  http://www.dengzhr.com/](http://www.dengzhr.com/)
-
-* [赵达的个人网站 腾讯高级前端开发工程师](http://zhaoda.net/)
-
-* [Randy](http://djyde.github.io/)
-
-    95年出生的全栈。卢涛南，英文名 Randy，用 djyde 这个ID混迹于网络。
-
-* [JS前端开发群月报 -豪情等人维护](http://www.kancloud.cn/jsfront/month/82796)
+* [Sublime HTML-CSS-JS Prettify](https://packagecontrol.io/packages/HTML-CSS-JS%20Prettify)
 
 ## Comments
 
