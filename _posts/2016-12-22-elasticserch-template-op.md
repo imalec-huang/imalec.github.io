@@ -159,7 +159,7 @@ PUT /_template/ule-business
 POST ule-business-test/_analyze
 {
   "analyzer": "camel_analyzer",
-  "text":     "中华人民国家 NullPointException"
+  "text":     "中华共和国NullPointException"
 }
 ```
 
