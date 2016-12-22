@@ -24,6 +24,8 @@ filebeat基于go语言，新版本5.×支持输出kafka
 
 >脚本只提供一个参考样本，实际运用根据自身环境修改其中参数和逻辑
 
+### 自动运维shell脚本
+
 ```
 #!/bin/bash
 FILEBEAT_HOME=/opt/filebeat
@@ -205,7 +207,9 @@ exit 0
 
 ## filebeat配置自动生成脚本
 
->自动提取方法的实现根据自身数据格式修改，脚本主要提供模板参考，Apache配置文件样本如：
+>自动提取方法的实现根据自身数据格式修改，脚本主要提供模板参考
+
+### Apache配置文件样本
 
 ```
 <VirtualHost *:80>
@@ -221,6 +225,8 @@ exit 0
     CustomLog "|/usr/sbin/rotatelogs /data/logs/apache/uhj-access.%Y%m%d.log 86400 480" apache_access_format
 </VirtualHost>
 ```
+
+### 自动配置文件生成Python脚本
 
 ```
 # -*- coding: utf-8 -*-
@@ -419,3 +425,7 @@ if __name__ == '__main__':
     print "【%sfilebeat-%s.yml】is OK" % (target, containerNameAlias)
 
 ```
+
+## 参考资料
+
+* [Filebeat-configuration-details](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration-details.html)
