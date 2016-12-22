@@ -22,6 +22,7 @@ icon: bookmark
 
 * [实时股票分析系统的架构与算法](http://www.infoq.com/cn/news/2015/12/open-source-reference-architectu)
 * [Spark1.6 实践系列](http://litaotao.github.io/introduction-to-spark)
+* [Ubuntu14.04 Install ELK](https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04)
 
 ## 编辑器
 
