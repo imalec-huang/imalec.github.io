@@ -207,7 +207,7 @@ POST ule-business-test/_analyze
 }
 ```
 
-#### 参考资料
+## 参考资料
 
 * [Elasticsearch Analyzer 的内部机制](http://mednoter.com/all-about-analyzer-part-one.html)
 * [Elasticsearch-analysis-custom-analyzer](https://www.elastic.co/guide/en/elasticsearch/reference/5.1/analysis-custom-analyzer.html)
