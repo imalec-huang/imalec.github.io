@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Ubuntu离线安装java"
+title:  "Ubuntu离线安装java与证书生成"
 date:   2016-12-21 20:19:00
 categories: linux
 tags: linux ubuntu java
@@ -15,15 +15,16 @@ ubunut中通过apt安装java因为生产环境网络问题选择离线安装
 
 ## 安装shell脚本
 
+### 预定义证书的IP域名
 
 ```
 #!/bin/bash
-USER_NAME=huangyebing
+USER_NAME=evis
 PRIVATE_TOKEN=jVraFSwVWZZX4PESyZgm
 declare -A DOMAINS
 DOMAINS[172.25.156.75]=es-client-01.clio.uledns.com
 DOMAINS[172.25.156.77]=es-client-02.clio.uledns.com
-
+#获取本机ip
 LOCAL_IP=`ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"`
 DOMAIN=${DOMAINS[$LOCAL_IP]}
 
@@ -31,7 +32,12 @@ if [ ! -n "${DOMAIN}" ];then
     echo "${LOCAL_IP} 找不到域名不存在"
     exit 1
 fi
-#检验java是不是可用
+```
+
+### 检验java是不是可用
+
+
+```
 checkJava() {
         if [ -x "$JAVA_HOME/bin/java" ]; then
                 JAVA="$JAVA_HOME/bin/java"
@@ -45,7 +51,11 @@ checkJava() {
         fi
         echo "Java is installed!"
 }
-#安装java
+```
+
+### 安装java
+
+```
 installJava() {
     JDK_HOME="/usr/lib/jvm"
     JDK_EXPORT="/etc/profile.d/oraclejdk.sh"
@@ -78,7 +88,11 @@ installJava() {
     source /etc/profile.d/oraclejdk.sh
     echo "OK"
 }
-#生成证书
+```
+
+### 生成证书
+
+```
 generateCert() {
     SSL_PATH="/etc/pki/tls"
     KEY="${SSL_PATH}/private/${DOMAIN}.key"
@@ -95,7 +109,11 @@ generateCert() {
         echo "The cert is exist"
     fi
 }
+```
 
+### 具体安装应用（此处安装logstash，并自动回去配置文件，替换文件中的部分配置）
+
+```
 installLogstash() {
     if [ -x "/opt/logstash/bin/logstash" ]; then
         echo "logstash is installed"
@@ -131,6 +149,11 @@ installLogstash() {
     sed -i "s/20480/8192/g" /etc/default/logstash
     sed -i "s/10g/8g/g" /etc/default/logstash
 }
+```
+
+### 执行
+
+```
 #第一步 自更新安装脚本
 wget -O installLS.sh git.uletm.com/$USER_NAME/elk-script/raw/master/logstash/installLS.sh?private_token=$PRIVATE_TOKEN
 #第二步 检测是否安装java，如果未安装将安装java
