@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "elasticsearch中模板的操作"
+title:  "Elasticsearch的分词与模板的操作"
 date:   2016-12-22 19:19:00
 categories: elastic
 tags: elasticsearch
