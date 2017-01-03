@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "日志收集agent-Filebeat自动化脚本"
+title:  "日志收集Agent-Filebeat自动化脚本"
 date:   2016-12-22 21:19:00
 categories: elastic
 tags: beats filebeat go
