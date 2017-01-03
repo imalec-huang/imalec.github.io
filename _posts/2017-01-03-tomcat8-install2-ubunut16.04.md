@@ -15,11 +15,14 @@ Apache Tomcat是用于服务的Java应用程序的Web服务器和servlet容器�
 
 
 
+
 ## 准备
 
 开始之前，你应该有一个具有sudo操作权限的非root用户，jdk安装参考[ubuntu离线安装java](https://imevis.github.io/2016/12/21/ubuntu-install-java-offline/)。
 
-## 第一步创建tomcat用户
+![](https://community-cdn-digitalocean-com.global.ssl.fastly.net/assets/tutorials/images/large/tomcat_tutorial_tw_pat.png?1468953231)
+
+## Step1 创建tomcat用户
 
 出于安全的考虑，tomcat应该使用一个非root权限的用户运行，所以我们将创建一个tomcat用户组和用户来启动tomcat服务
 首先我们创建一个group:
@@ -30,16 +33,23 @@ Apache Tomcat是用于服务的Java应用程序的Web服务器和servlet容器�
 
 `$ sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat`
 
-## 下载安装tomcat
+## Step2 下载安装tomcat
+
+切换至临时目录下载tomcat压缩包
 
 ```
 cd /tmp
 curl -O http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.5/bin/apache-tomcat-8.5.5.tar.gz
+```
+
+创建目录，解压tomcat压缩包
+
+```
 sudo mkdir /opt/tomcat
 sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
 ```
 
-## 修改tomcat用户权限
+## Step3 修改权限
 
 ```
 cd /opt/tomcat
@@ -49,21 +59,21 @@ sudo chmod g+x conf
 sudo chown -R tomcat webapps/ work/ temp/ logs/
 ```
 
-## 创建一个systemd服务文件
+## Step4 创建systemd服务文件
 
-> 获取java安装路径
+ 获取java安装路径
 
 `sudo update-java-alternatives -l`
 
-> 输出
+ 输出
 
 `java-1.8.0-openjdk-amd64       1081       /usr/lib/jvm/java-1.8.0-openjdk-amd64`
 
-> JAVA_HOME
+JAVA_HOME
 
 `/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre`
 
-> 创建service文件
+创建service文件
 
 `sudo vi /etc/systemd/system/tomcat.service`
 
@@ -95,7 +105,7 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
-## 启动tomcat
+## Step5 启动查看tomcat
 
 `sudo systemctl daemon-reload`
 
@@ -103,7 +113,7 @@ WantedBy=multi-user.target
 
 `sudo systemctl status tomcat`
 
-## 添加tomcat管理用户
+## Step6 配置tomcat管理用户
 
 `sudo vi /opt/tomcat/conf/tomcat-users.xml`
 
@@ -115,11 +125,11 @@ WantedBy=multi-user.target
 <user username="tomcat" password="tomcat" roles="admin-gui,admin,manager-gui,manager"/>
 ```
 
-> 修改配置
+修改配置
 
 `sudo vi /opt/tomcat/webapps/manager/META-INF/context.xml`
 
-> 和
+和
 
 `sudo vi /opt/tomcat/webapps/host-manager/META-INF/context.xml`
 
@@ -138,3 +148,6 @@ context.xml files for Tomcat webapps
 ### 访问地址
 
 > http://remote_address:8080
+
+## 参考
+[How To Install Apache Tomcat 8 on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-ubuntu-16-04)
