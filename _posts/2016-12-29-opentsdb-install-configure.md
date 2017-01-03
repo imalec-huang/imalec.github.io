@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "opentsdb安装与配置说明"
+title:  "OpenTSDB安装与配置说明"
 date:   2016-12-29 16:19:00
 categories: opentsdb
 tags: opentsdb java
@@ -9,7 +9,7 @@ tags: opentsdb java
 * content
 {:toc}
 
-opentsdb依赖hbase
+OpenTSDB ，可以认为是一个时系列数据（库），它基于HBase存储数据，充分发挥了HBase的分布式列存储特性，支持数百万每秒的读写，它的特点就是容易扩展，灵活的tag机制。
 
 
 
