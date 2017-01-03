@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "How To Install Apache Tomcat 8 on Ubuntu 16.04"
+title:  "Ubuntu 16.04中安装Apache Tomcat 8服务"
 date:   2016-12-29 16:19:00
 categories: tomcat
-tags: tomcat8 java
+tags: tomcat8 java ubuntu
 ---
 
 * content
@@ -150,4 +150,4 @@ context.xml files for Tomcat webapps
 > http://remote_address:8080
 
 ## 参考
-[How To Install Apache Tomcat 8 on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-ubuntu-16-04)
+【[How To Install Apache Tomcat 8 on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-ubuntu-16-04)】
