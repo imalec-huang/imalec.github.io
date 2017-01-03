@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Ubuntu 16.04中安装Apache Tomcat 8服务"
-date:   2016-12-29 16:19:00
+date:   2017-01-03 09:56:00
 categories: tomcat
 tags: tomcat8 java ubuntu
 ---
@@ -18,7 +18,7 @@ Apache Tomcat是用于服务的Java应用程序的Web服务器和servlet容器�
 
 ## 准备
 
-开始之前，你应该有一个具有sudo操作权限的非root用户，jdk安装参考[ubuntu离线安装java](https://imevis.github.io/2016/12/21/ubuntu-install-java-offline/)。
+开始之前，你应该有一个具有sudo操作权限的非root用户，jdk安装参考[Ubuntu离线安装Java](https://imevis.github.io/2016/12/21/ubuntu-install-java-offline/)。
 
 ![](https://community-cdn-digitalocean-com.global.ssl.fastly.net/assets/tutorials/images/large/tomcat_tutorial_tw_pat.png?1468953231)
 
