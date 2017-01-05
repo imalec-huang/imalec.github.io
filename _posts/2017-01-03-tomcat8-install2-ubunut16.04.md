@@ -90,7 +90,7 @@ Environment=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 Environment=CATALINA_PID=/opt/tools/tomcat/temp/tomcat.pid
 Environment=CATALINA_HOME=/opt/tools/tomcat
 Environment=CATALINA_BASE=/opt/tools/tomcat
-Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseConcMarkSweepGC'
 Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
 
 ExecStart=/opt/tools/tomcat/bin/startup.sh
