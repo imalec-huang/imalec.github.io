@@ -29,9 +29,9 @@ Apache Tomcat是用于服务的Java应用程序的Web服务器和servlet容器�
 
 `$ sudo groupadd tomcat`
 
-创建一个新的 tomcat用户。我们将使该用户的成员tomcat组，一个主目录/opt/tomcat（这里我们将安装Tomcat），并将shell login 设置为 /bin/false（所以没有人可以登录到帐户）
+创建一个新的 tomcat用户。我们将使该用户的成员tomcat组，一个主目录/opt/tools/tomcat（这里我们将安装Tomcat），并将shell login 设置为 /bin/false（所以没有人可以登录到帐户）
 
-`$ sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat`
+`$ sudo useradd -s /bin/false -g tomcat -d /opt/tools/tomcat tomcat`
 
 ## Step2 下载安装tomcat
 
@@ -39,21 +39,22 @@ Apache Tomcat是用于服务的Java应用程序的Web服务器和servlet容器�
 
 ```
 cd /tmp
-curl -O http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.5/bin/apache-tomcat-8.5.5.tar.gz
+curl -O http://ftp.yz.yamagata-u.ac.jp/pub/network/apache/tomcat/tomcat-8/v8.5.9/bin/apache-tomcat-8.5.9.tar.gz
 ```
 
 创建目录，解压tomcat压缩包
 
 ```
-sudo mkdir /opt/tomcat
-sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
+sudo mkdir /opt/tools/tomcat
+sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tools/tomcat --strip-components=1
 ```
 
 ## Step3 修改权限
 
 ```
-cd /opt/tomcat
-sudo chgrp -R tomcat /opt/tomcat
+cd /opt/tools/tomcat
+sudo chmod a+w /opt/tools
+sudo chgrp -R tomcat /opt/tools/tomcat
 sudo chmod -R g+r conf
 sudo chmod g+x conf
 sudo chown -R tomcat webapps/ work/ temp/ logs/
@@ -67,11 +68,11 @@ sudo chown -R tomcat webapps/ work/ temp/ logs/
 
  输出
 
-`java-1.8.0-openjdk-amd64       1081       /usr/lib/jvm/java-1.8.0-openjdk-amd64`
+`java-1.8.0-openjdk-amd64       1081       /usr/lib/jvm/oracle_jdk8`
 
 JAVA_HOME
 
-`/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre`
+`/usr/lib/jvm/oracle_jdk8/jre`
 
 创建service文件
 
@@ -86,14 +87,14 @@ After=network.target
 Type=forking
 
 Environment=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
-Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
-Environment=CATALINA_HOME=/opt/tomcat
-Environment=CATALINA_BASE=/opt/tomcat
+Environment=CATALINA_PID=/opt/tools/tomcat/temp/tomcat.pid
+Environment=CATALINA_HOME=/opt/tools/tomcat
+Environment=CATALINA_BASE=/opt/tools/tomcat
 Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
 Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
 
-ExecStart=/opt/tomcat/bin/startup.sh
-ExecStop=/opt/tomcat/bin/shutdown.sh
+ExecStart=/opt/tools/tomcat/bin/startup.sh
+ExecStop=/opt/tools/tomcat/bin/shutdown.sh
 
 User=tomcat
 Group=tomcat
@@ -105,17 +106,9 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
-## Step5 启动查看tomcat
+## Step5 配置tomcat管理用户
 
-`sudo systemctl daemon-reload`
-
-`sudo systemctl start tomcat`
-
-`sudo systemctl status tomcat`
-
-## Step6 配置tomcat管理用户
-
-`sudo vi /opt/tomcat/conf/tomcat-users.xml`
+`sudo vi /opt/tools/tomcat/conf/tomcat-users.xml`
 
 ```
 <role rolename="manager"/>
@@ -127,11 +120,11 @@ WantedBy=multi-user.target
 
 修改配置
 
-`sudo vi /opt/tomcat/webapps/manager/META-INF/context.xml`
+`sudo vi /opt/tools/tomcat/webapps/manager/META-INF/context.xml`
 
 和
 
-`sudo vi /opt/tomcat/webapps/host-manager/META-INF/context.xml`
+`sudo vi /opt/tools/tomcat/webapps/host-manager/META-INF/context.xml`
 
 ```
 context.xml files for Tomcat webapps
@@ -140,6 +133,14 @@ context.xml files for Tomcat webapps
          allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />-->
 </Context>
 ```
+
+## Step6 启动查看tomcat
+
+`sudo systemctl daemon-reload`
+
+`sudo systemctl start tomcat`
+
+`sudo systemctl status tomcat`
 
 ### 重启tomcat
  
