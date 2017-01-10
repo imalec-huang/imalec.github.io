@@ -83,7 +83,7 @@ bash /usr/share/opentsdb/tools/create_table.sh
 ## 备注
 遇到的无法启动的两个问题
  - java安装问题，导致sudo执行找到不java，可以通过sudo -s 切换到root权限下执行 java -version验证java的环境问题
- - 如果通过编译源码安装，需要注意日志路径/pid文件的读写权限问题
+ - 如果通过编译源码安装，测试opentsdb-2.3.0版本编译错误，需要将third_party包移动到build目录下，需要注意日志路径/pid文件的读写权限问题
 
 ## 部分api
 
