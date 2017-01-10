@@ -85,6 +85,10 @@ bash /usr/share/opentsdb/tools/create_table.sh
  - java安装问题，导致sudo执行找到不java，可以通过sudo -s 切换到root权限下执行 java -version验证java的环境问题
  - 如果通过编译源码安装，需要注意日志路径/pid文件的读写权限问题
 
+## 部分api
+
+`查看指标列表 http://xxx.xx.xxx.xxx:4242/api/suggest?max=1000&q=&type=metrics`
+`删除指标数据 tsdb scan 2014/05/01 sum spark.ygz.sale.record  --delete`
 
 ## Duplicate Data Points
 
