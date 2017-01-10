@@ -34,7 +34,12 @@ grant codebase "file:${java.home}/lib/tools.jar" {
 
 启动命令：（手动替换变量）
 
-`${JAVA_HOME}/bin/jstatd -J-Djava.security.policy=/home/user/jstatd.all.policy -J-Djava.rmi.server.hostname=${hostname} -J-Djava.rmi.server.logCalls=true`
+```
+${JAVA_HOME}/bin/jstatd
+ -J-Djava.security.policy=/home/user/jstatd.all.policy
+ -J-Djava.rmi.server.hostname=${hostname}
+ -J-Djava.rmi.server.logCalls=true
+```
 
 ## [JMX-Option](http://docs.oracle.com/javase/8/docs/technotes/guides/management/agent.html)
 
@@ -51,32 +56,33 @@ grant codebase "file:${java.home}/lib/tools.jar" {
 
 常用命令如下：
 
-[查看线程状态](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstack.html)
+### [查看线程状态](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstack.html)
 
 `jstack vmid`
 
-[查看内存存活对象/heap分布](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jmap.html)
+### [查看内存存活对象/heap分布](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jmap.html)
 
 `jmap -histo:live vmid`
+
 `jmap -heap vmid`
 
-[查看GC状态](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html)
+### [查看GC状态](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html)
 
 `jstat -gc|gcutil vmid -ms -count`
 
 sudo环境下未配置JAVA_HOME，使用绝对路径
 
-`sudo JAVA_HOE/bin/jxxx -<options> vmid`
+`sudo JAVA_HOE/bin/jxxx -options vmid`
 
 测试中部分命令需要程序启动用户运行(histo:live)，如下：
 
-`sudo -u user JAVA_HOMT/bin/jxxx -<options> vmid`
+`sudo -u user JAVA_HOMT/bin/jxxx -options vmid`
 
 ## linux 查看线程数
 - top -H : Threads toggle 加上这个选项启动top，top一行显示一个线程。否则，它一行显示一个进程。
 
 - ps xH：H Show threads as if they were processes 这样可以查看所有存在的线程。
 
-- ps -mp <PID>：m Show threads after processes 这样可以查看一个进程起的线程数。
+- ps -mp PID：m Show threads after processes 这样可以查看一个进程起的线程数。
 
-- cat /proc/<PID>/status 进程的详细信息
+- cat /proc/PID/status 进程的详细信息
