@@ -40,16 +40,22 @@ lsblk -o NAME,SIZE / df -lh #All partition sizes of the HDD in Terminal
 查看 `cat /proc/loadavg | uptime`
 
 衡量机器负载的一个重要指标，一般影响这数值的两个因素：
+
  - 活跃任务
+ 
  - 不可中断任务（IO操作）
+ 
 ![](https://pic1.zhimg.com/v2-3a6052ede46286ffe2d00c952f817710_b.png)
+
 所以它直接反应了系统的健康状态，它能牵引出系统诸多方面的问题
 
-其次是数值代表的意义，Single Core满载load值为1，那当大于1则表示有等待任务，小于则表示资源有空闲，Multiple Core满载load值则为 n*1
+其次是数值代表的意义 `Single Core满载load值为1，那当大于1则表示有等待任务，小于则表示资源有空闲，Multiple Core满载load值则为 n*1`
 
 ## CUP
 
 属于一般采集至/proc/vmstat,单个的状态查看/proc/pid/xxx,监测的工具一般iostat/top/dstat等等(自行发掘，大同小异)
+
+### CPU信息
 
 Cpu(s)表示的是cpu信息。各个值的意思是：
 
@@ -72,6 +78,8 @@ st: steal time - - % CPU time in involuntary wait by virtual cpu while hyperviso
 ```
 
 注：st说明中范围为"窃取时间"，这是专门针对虚拟机的
+
+### CPU性能测试
 
 测试工具： sysbench
 
