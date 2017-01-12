@@ -53,7 +53,8 @@ lsblk -o NAME,SIZE / df -lh #All partition sizes of the HDD in Terminal
 
 ## CUP
 
-属于一般采集至/proc/vmstat,单个的状态查看/proc/pid/xxx,监测的工具一般iostat/top/dstat等等(自行发掘，大同小异)
+信息一般采集至/proc/vmstat
+监测的工具一般iostat/top/htop/atop/dstat等等(自行发掘，大同小异)
 
 ### CPU信息
 
@@ -61,19 +62,12 @@ Cpu(s)表示的是cpu信息。各个值的意思是：
 
 ```
 us: user cpu time (or) % CPU time spent in user space
-
 sy: system cpu time (or) % CPU time spent in kernel space
-
 ni: user nice cpu time (or) % CPU time spent on low priority processes
-
 id: idle cpu time (or) % CPU time spent idle
-
 wa: io wait cpu time (or) % CPU time spent in wait (on disk)
-
 hi: hardware irq (or) % CPU time spent servicing/handling hardware interrupts
-
 si: software irq (or) % CPU time spent servicing/handling software interrupts
-
 st: steal time - - % CPU time in involuntary wait by virtual cpu while hypervisor is servicing another processor (or) % CPU time stolen from a virtual machine
 ```
 
@@ -113,8 +107,42 @@ Threads fairness:
 
 ## 内存
 
+信息一般采集至/proc/meminfo
+检测工具一般vmstat/free
+
+输出的第二行表示系统内存的使用情况：
+
+```
+Mem： total（总量）= 3920MB，
+    　　used（已使用）= 1938MB，
+    　　free（空闲）= 1982MB，
+    　　shared（共享内存）= 0MB，
+    　　buffers = 497MB，
+    　　cached = 1235MB
+```
+
+注：前面四项都比较好理解，buffer 和 cache找不到合适的词来翻译，它们的区别在于：
+
+A buffer is something that has yet to be "written" to disk. 
+A cache is something that has been "read" from the disk and stored for later use.
+
+即buffer用于存放要输出到磁盘的数据，而cache是从磁盘读出存放到内存中待今后使用的数据。它们的引入均是为了提供IO的性能。
+
+输出的第三行表示在第二行的基础上-/+ buffers/cache得到的：
+
+- buffers/cache used = Mem used – buffers – cached = 1938MB – 497MB – 1235MB = 205MB
++ buffers/cache free = Mem free + buffers + cached = 1982MB + 497MB + 1235MB = 3714MB
+
+输出的第三行表示交换分区使用的情况：
+
+Swap：total（总量）= 4095MB
+    　　used（使用）= 0MB
+   　　 free（空闲）= 4095MB
+
 ## 磁盘
+iotop
 
 ## 网络
+iftop
 
 ## 参考
