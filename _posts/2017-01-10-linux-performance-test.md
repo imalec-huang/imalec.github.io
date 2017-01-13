@@ -128,8 +128,8 @@ A buffer is something that has yet to be "written" to disk.
 
 A cache is something that has been "read" from the disk and stored for later use.
 
-Buffer:用于缓冲要存储到磁盘的数据
-Cache:用于缓存从磁盘读出存放到内存中待今后使用的数据。
+Buffer:预写
+Cache:预读。
 
 它们的引入均是为了提供磁盘IO的性能。
 
@@ -222,9 +222,116 @@ execution time (avg/stddev): 20.6986/0.00
 ```
 
 ## 磁盘
-iotop
+
+### 信息
+
+磁盘一般是系统中最容易出现性能瓶颈的地方，首先了解下磁盘IO的工作基本知识：
+
+`/usr/bin/time -v date`
+
+1.对于文件的读写不会直接对磁盘读写（buffers/cache）
+
+2.磁盘与内存之间交互通过页(Page size (bytes) 4096)
+
+3.页的两个管理进程kswapd 和 pdflush。
+
+4.两种缺页中断动作
+
+主缺页中断-从磁盘读取缺页(Major page faults)
+次缺页中断-从缓存读取缺页(Minor page faults)
+
+5.页的三种类型
+
+Read pages，只读页（或代码页）- 不可修改页。 
+Dirty pages，脏页 - 内存中发生修改，待同步到磁盘文件中的页。 
+Anonymous pages，匿名页  - 无文件关联页。 
+
+6.IOPS - 磁盘的每秒可访问次数
+
+7.KB per IO  =  每秒读写 IO 字节数除以每秒读写 IOPS 数，rkB/s 除以 r/s，wkB/s 除以 w/s
+
+8.顺序 IO 和 随机 IO 
+
+### 监控
+
+`iostat -kx 1`
+
+DISK属性值说明：
+
+```
+rrqm/s:  每秒进行 merge 的读操作数目。即 rmerge/s
+wrqm/s:  每秒进行 merge 的写操作数目。即 wmerge/s
+r/s:  每秒完成的读 I/O 设备次数。即 rio/s
+w/s:  每秒完成的写 I/O 设备次数。即 wio/s
+rsec/s:  每秒读扇区数。即 rsect/s
+wsec/s:  每秒写扇区数。即 wsect/s
+rkB/s:  每秒读K字节数。是 rsect/s 的一半，因为每扇区大小为512字节。
+wkB/s:  每秒写K字节数。是 wsect/s 的一半。
+avgrq-sz:  平均每次设备I/O操作的数据大小 (扇区)。
+avgqu-sz:  平均I/O队列长度。
+await:  平均每次设备I/O操作的等待时间 (毫秒)。
+svctm: 平均每次设备I/O操作的服务时间 (毫秒)。
+%util:  一秒中有百分之多少的时间用于 I/O 操作，即被io消耗的cpu百分比
+```
+
+备注：如果 %util 接近 100%，说明产生的I/O请求太多，I/O系统已经满负荷，该磁盘可能存在瓶颈。如果 svctm 比较接近 await，说明 I/O 几乎没有等待时间；如果 await 远大于 svctm，说明I/O 队列太长，io响应太慢，则需要进行必要优化。如果avgqu-sz比较大，也表示有当量io在等待。
+
+### 性能
+
+测试样本
+
+```
+sysbench --test=fileio --file-total-size=1G prepare
+
+sysbench --test=fileio --file-total-size=1G --file-test-mode=rndrw --init-rng=on --max-time=300 --max-requests=0 run
+
+Running the test with following options:
+Number of threads: 1
+Initializing random number generator from timer.
+ 
+ 
+Extra file open flags: 0
+128 files, 8Mb each
+1Gb total file size
+Block size 16Kb
+Number of random requests for random IO: 0
+Read/Write ratio for combined random IO test: 1.50
+Periodic FSYNC enabled, calling fsync() each 100 requests.
+Calling fsync() at the end of test, Enabled.
+Using synchronous I/O mode
+Doing random r/w test
+Threads started!
+Time limit exceeded, exiting...
+Done.
+ 
+Operations performed: 33000 Read, 22000 Write, 70340 Other = 125340 Total
+Read 515.62Mb Written 343.75Mb Total transferred 859.38Mb (2.8644Mb/sec)
+183.32 Requests/sec executed
+ 
+Test execution summary:
+total time: 300.0153s
+total number of events: 55000
+total time taken by event execution: 0.4013
+per-request statistics:
+min: 0.00ms
+avg: 0.01ms
+max: 0.10ms
+approx. 95 percentile: 0.01ms
+ 
+Threads fairness:
+events (avg/stddev): 55000.0000/0.00
+execution time (avg/stddev): 0.4013/0.00
+```
+
+备注：--file-test-mode   文件测试模式，包含seqwr（顺序写）、seqrewr（顺序读写）、seqrd（顺序读）、rndrd（随即读）、rndwr（随机写）、rndrw（随机读写）
 
 ## 网络
-iftop
+
+网络测试监控极为复杂，详细方法参考【参考】博文
+
+这里只关注流量监控
+iftop/nload
 
 ## 参考
+
+【[Linux按照CPU、内存、磁盘IO、网络性能监测](https://my.oschina.net/chape/blog/159640)】
