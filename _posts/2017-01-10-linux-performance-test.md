@@ -237,14 +237,17 @@ execution time (avg/stddev): 20.6986/0.00
 
 4.两种缺页中断动作
 
-主缺页中断-从磁盘读取缺页(Major page faults)
-次缺页中断-从缓存读取缺页(Minor page faults)
+ - 主缺页中断-从磁盘读取缺页(Major page faults)
+ 
+ - 次缺页中断-从缓存读取缺页(Minor page faults)
 
 5.页的三种类型
 
-Read pages，只读页（或代码页）- 不可修改页。 
-Dirty pages，脏页 - 内存中发生修改，待同步到磁盘文件中的页。 
-Anonymous pages，匿名页  - 无文件关联页。 
+ - Read pages，只读页（或代码页）- 不可修改页。
+  
+ - Dirty pages，脏页 - 内存中发生修改，待同步到磁盘文件中的页。 
+ 
+ - Anonymous pages，匿名页  - 无文件关联页。 
 
 6.IOPS - 磁盘的每秒可访问次数
 
@@ -327,10 +330,10 @@ execution time (avg/stddev): 0.4013/0.00
 
 ## 网络
 
-网络测试监控极为复杂，详细方法参考【参考】博文
+`网络测试监控极为复杂，详细方法参考【参考】博文`
 
 这里只关注流量监控
-iftop/nload
+iftop/atop/nload -m
 
 ## 参考
 
