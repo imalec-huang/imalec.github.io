@@ -2,7 +2,7 @@
 layout: post
 title:  "OpenTSDB安装与配置说明"
 date:   2016-12-29 16:19:00
-categories: opentsdb
+categories: DevOps
 tags: opentsdb java
 ---
 

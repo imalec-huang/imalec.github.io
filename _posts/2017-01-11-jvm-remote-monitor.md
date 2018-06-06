@@ -2,8 +2,8 @@
 layout: post
 title:  "Jvm远程连接监控调试"
 date:   2017-01-11 09:56:00
-categories: java
-tags: java linux jvm debug
+categories: 标准框架
+tags: java linux jvm jmx
 ---
 
 * content

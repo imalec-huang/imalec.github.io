@@ -2,7 +2,7 @@
 layout: post
 title:  "Ubuntu离线安装java与证书生成"
 date:   2016-12-21 20:19:00
-categories: linux
+categories: DevOps
 tags: linux ubuntu java
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Elasticsearch的分词与模板的操作"
 date:   2016-12-22 19:19:00
-categories: elastic
+categories: 服务中间件
 tags: elasticsearch
 ---
 

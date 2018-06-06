@@ -2,7 +2,7 @@
 layout: post
 title:  "Ubuntu 16.04中安装Apache Tomcat 8服务"
 date:   2017-01-03 09:56:00
-categories: tomcat
+categories: DevOps
 tags: tomcat8 java ubuntu
 ---
 

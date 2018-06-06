@@ -2,7 +2,7 @@
 layout: post
 title:  "linux性能测试与监控"
 date:   2017-01-10 09:56:00
-categories: linux
+categories: Linux
 tags: linux test
 ---
 
