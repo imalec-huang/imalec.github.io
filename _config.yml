@@ -7,9 +7,9 @@
 
 # Site settings
 title: Evis.Huang's Blog & Note
-brief-intro: Java Dev Engineer
+brief-intro: Java Developer
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://imevis.github.io" # the base hostname & protocol for your site
+url: "http://www.i2cool.cn" # the base hostname & protocol for your site
 
 permalink: /:year/:month/:day/:title/
 
@@ -18,8 +18,8 @@ twitter_username: #imevis
 facebook_username: #imevis.water
 github_username:  imevis
 email: imevis@hotmail.com
-weibo_username: to_elvis
-izhihu_username: #imevis
+weibo_username: #to_elvis
+izhihu_username: imevis
 
 description_footer: 本站记录我程序员人生中点点滴滴！
 
