@@ -61,13 +61,13 @@ lsblk -o NAME,SIZE / df -lh #All partition sizes of the HDD in Terminal
 Cpu(s)表示的是cpu信息。各个值的意思是：
 
 ```
-us: user cpu time (or) % CPU time spent in user space
-sy: system cpu time (or) % CPU time spent in kernel space
+us: user cpu time (or) % CPU time spent in user space 用户空间上的
+sy: system cpu time (or) % CPU time spent in kernel space 用在系统空间上
 ni: user nice cpu time (or) % CPU time spent on low priority processes
-id: idle cpu time (or) % CPU time spent idle
-wa: io wait cpu time (or) % CPU time spent in wait (on disk)
-hi: hardware irq (or) % CPU time spent servicing/handling hardware interrupts
-si: software irq (or) % CPU time spent servicing/handling software interrupts
+id: idle cpu time (or) % CPU time spent idle 空闲
+wa: io wait cpu time (or) % CPU time spent in wait (on disk) 用在等待磁盘IO
+hi: hardware irq (or) % CPU time spent servicing/handling hardware interrupts 硬中断
+si: software irq (or) % CPU time spent servicing/handling software interrupts 软中断
 st: steal time - - % CPU time in involuntary wait by virtual cpu while hypervisor is servicing another processor (or) % CPU time stolen from a virtual machine
 ```
 
@@ -148,13 +148,13 @@ free命令中"buffers/cached"的内存，由于这块内存从操作系统的角
 #### 读性能 样本
 
 ```
-sysbench --test=memory --memory-block-size=1K --memory-scope=global --memory-total-size=100G --memory-oper=read run
+sysbench --test=memory --memory-block-size=4K --memory-scope=global --memory-total-size=100G --memory-oper=read run
 
 Running the test with following options:
 Number of threads: 1
  
 Doing memory operations speed test
-Memory block size: 1K
+Memory block size: 4K
  
 Memory transfer size: 102400M
  
@@ -186,13 +186,13 @@ execution time (avg/stddev): 12.1786/0.00
 #### 写性能 样本
 
 ```
-sysbench --test=memory --memory-block-size=1K --memory-scope=global --memory-total-size=100G --memory-oper=write run
+sysbench --test=memory --memory-block-size=4K --memory-scope=global --memory-total-size=100G --memory-oper=write run
 
 Running the test with following options:
 Number of threads: 1
  
 Doing memory operations speed test
-Memory block size: 1K
+Memory block size: 4K
  
 Memory transfer size: 102400M
  
@@ -326,7 +326,7 @@ events (avg/stddev): 55000.0000/0.00
 execution time (avg/stddev): 0.4013/0.00
 ```
 
-备注：--file-test-mode   文件测试模式，包含seqwr（顺序写）、seqrewr（顺序读写）、seqrd（顺序读）、rndrd（随即读）、rndwr（随机写）、rndrw（随机读写）
+备注：--file-test-mode   文件测试模式，包含seqwr（顺序写）、seqrewr（顺序读写）、seqrd（顺序读）、rndrd（随即读）、rndwr（随机写）、rndrw（随机读写）,liunx内存交换数据大小以页为单位，一页大小4k，测试block设置为4k
 
 ## 网络
 
@@ -337,4 +337,4 @@ iftop/atop/nload -m
 
 ## 参考
 
-【[Linux按照CPU、内存、磁盘IO、网络性能监测](https://my.oschina.net/chape/blog/159640)】
+【[Linux按照CPU、内存、磁盘IO、网络性能监测](https://blog.csdn.net/huangjin0507/article/details/51879705)】
