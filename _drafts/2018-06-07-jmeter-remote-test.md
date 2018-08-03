@@ -27,3 +27,7 @@ jmeter.properties中ssl.disable放开注释，值设为true
 
 ## 控制端
 修改jmeter.properties添加remote.host只想slave启动的hostname，端口默认1099
+
+language=zh_CN 设置默认中文
+
+乱码解决解决https://www.cnblogs.com/mawenqiangios/p/7918583.html
