@@ -1,36 +1,33 @@
 ---
 layout: post
-title:  "OpenTSDB安装与配置说明"
-date:   2016-12-29 16:19:00
+title:  "Hbase基本操作方法"
+date:   2018-05-10 17:19:00
 categories: DevOps
-tags: opentsdb java
+tags: hbase java
 ---
 
 * content
 {:toc}
 
-摘要
+hbase-client二次封装，核心解决hbase中列与实体对象对映射，简化对对象对处理
+
+![](https://hbase.apache.org/images/hbase_logo_with_orca_large.png)
 
 
 
 
-
-包依赖
-```
-			<dependency>
-				<groupId>org.apache.hbase</groupId>
-				<artifactId>hbase-client</artifactId>
-				<version>1.2.0-cdh5.14.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.hbase</groupId>
-				<artifactId>hbase-thrift</artifactId>
-				<version>1.3.1</version>
-			</dependency>
+## 包依赖
+```java
+<!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase-client -->
+<dependency>
+    <groupId>org.apache.hbase</groupId>
+    <artifactId>hbase-client</artifactId>
+    <version>2.1.0</version>
+</dependency>
 ```
 
-HbaseTemplate
-```
+## Template类实现
+```java
 package info.data.themis.component.hbase;
 
 import java.io.IOException;
@@ -391,6 +388,7 @@ public class HbaseTemplate {
 	}
 }
 ```
+## 默认mapper实现
 ```
 package info.data.themis.mapper;
 
@@ -500,4 +498,4 @@ public class DefaultMapper<T> implements RowMapper<T> {
 }
 ```
 
-> 核心等两个类其他接口自行创建
+> 核心等两个类,其他接口自行创建

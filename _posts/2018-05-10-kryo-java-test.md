@@ -1,22 +1,23 @@
 ---
 layout: post
-title:  "OpenTSDB安装与配置说明"
-date:   2016-12-29 16:19:00
-categories: DevOps
-tags: opentsdb java
+title:  "kryo高性能序列化组件"
+date:   2018-05-10 16:19:00
+categories: 应用组件
+tags: java
 ---
 
 * content
 {:toc}
 
-摘要
+此前项目中需要用到对象序列化，对比了下jackson/kryo/jdk Serializ，总体表现json方式能在性能与稳定性上达到一个均衡
+kryo性能极好，不过对于多层嵌套对对象表现很不稳定，java序列化稳定性比较好不过性能比较糟糕
 
 
 
 
 
-包依赖
-```
+## 包依赖
+```java
 			<dependency>
 				<groupId>com.esotericsoftware</groupId>
 				<artifactId>kryo</artifactId>
@@ -24,8 +25,8 @@ tags: opentsdb java
 			</dependency>
 			<dependency>
 ```
-测试
-```
+## 测试
+```java
 package info.data.themis.core.function;
 
 import java.io.FileInputStream;
@@ -197,7 +198,9 @@ class Simple implements Serializable {
 
 }
 ```
-工具类
+
+## 工具类
+
 ```
 package info.data.themis.component.mq.serializer;
 
@@ -410,8 +413,9 @@ public class KryoSerializerUtils {
 	}
 }
 ```
-Kryo rabbitmq MessageConverter实现例子
-```
+## Kryo rabbitmq MessageConverter实现例子
+
+```java
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -539,4 +543,4 @@ public class KryoSerializerMessageConverter extends WhiteListDeserializingMessag
 }
 ```
 
-> 结果自己验证，kroy非常快，但是多层嵌套的复杂类型会出现数据错位
+> kroy非常快，但是多层嵌套的复杂类型会出现数据错位
