@@ -388,8 +388,10 @@ public class HbaseTemplate {
 	}
 }
 ```
+
 ## 默认mapper实现
-```
+
+```java
 package info.data.themis.mapper;
 
 import java.io.IOException;
