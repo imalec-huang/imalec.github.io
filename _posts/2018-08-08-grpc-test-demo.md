@@ -107,7 +107,7 @@ message ResponseModel {
 
 > 3.异步xxxxxStub = xxxxGrpc.newStub(ManagedChannel)
 
-> 4.参数xxxx..newBuilder().set.build
+> 4.参数xxxxRequest.newBuilder().set.build
 
 > 5.channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 

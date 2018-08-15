@@ -228,7 +228,7 @@ exit 0
 
 ### 自动配置文件生成Python脚本
 
-```
+```python
 # -*- coding: utf-8 -*-
 import codecs
 import httplib
@@ -349,12 +349,10 @@ class Extracter:
                 print "【%s - %s】 Can't found item!!!" % (hostip, containerName)
                 exit()
             for result in results:
-                if "profile" in result and "logs" in result["profile"]:
                     container = (result["server"] if "server" in result else "container")
                     module = (result["module"] if "module" in result else "")
                     app = (result["app"] if "app" in result else "")
                     assigner = (result["assigner"] if "assigner" in result else "")
-                    for log in result["profile"]["logs"]:
                         if not (re.match(r'[\w/-_.]', log["path"])):
                             print log["path"]
                         config = {"module": module, "app": app, "container": container, "assigner": assigner, "hostip": self.__hostip,
